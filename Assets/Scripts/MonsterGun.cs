@@ -13,14 +13,11 @@ public class MonsterGun : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        while (true)
-        {
-            var bulletObj = Instantiate(bullet, transform.position, new Quaternion());
-            var direction = (Vector2)(player.transform.position - transform.position).normalized;
-            Debug.Log(direction);
-            bulletObj.GetComponent<Rigidbody2D>().velocity += direction * 5;
-            Destroy(bulletObj, 10);
-            yield return new WaitForSeconds(1);
-        }
+        var bulletObj = Instantiate(bullet, transform.position, new Quaternion());
+        var direction = (Vector2)(player.transform.position - transform.position).normalized;
+        bulletObj.GetComponent<Rigidbody2D>().velocity += direction * 5;
+        Destroy(bulletObj, 10);
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Shoot());
     }
 }

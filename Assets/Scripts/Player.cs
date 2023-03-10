@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GameObject barrier;
     private Vector2 _direction;
     private Rigidbody2D _rb;
     private int _jumpCount;
@@ -17,6 +18,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(1) || Input.GetMouseButton(1))
+        {
+            barrier.SetActive(true);
+        }
+        else
+        {
+            barrier.SetActive(false);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space) && _jumpCount < 2)
         {
             _jumpCount++;

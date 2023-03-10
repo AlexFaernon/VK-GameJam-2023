@@ -14,7 +14,6 @@ public class Gun : MonoBehaviour
         
         var bulletObj = Instantiate(bullet, transform.position, new Quaternion());
         var direction = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
-        Debug.Log(direction);
         bulletObj.GetComponent<Rigidbody2D>().velocity += direction * 5;
         Destroy(bulletObj, 10);
     }
