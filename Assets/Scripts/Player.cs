@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && _jumpCount < 2)
+        if (Input.GetKeyDown(KeyCode.Space) && _jumpCount < 2)
         {
             _jumpCount++;
             _rb.velocity = new Vector2(_rb.velocity.x, 10);
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         if (col.gameObject.CompareTag("Ground"))
         {
             _jumpCount = 0;
+            transform.rotation = new Quaternion(); 
         }
     }
 }
