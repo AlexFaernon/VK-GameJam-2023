@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    public Transform objectToFollow;
 
     private void Update()
     {
-        transform.position = player.position - Vector3.forward * 10;
+        transform.position = objectToFollow.position - Vector3.forward * 10;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1) || Input.GetMouseButton(1))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
         {
             barrier.SetActive(true);
         }
@@ -36,9 +37,9 @@ public class Player : MonoBehaviour
         _rb.velocity = new Vector2(_direction.x * 5, _rb.velocity.y);
     }
 
-    public void Move(InputAction.CallbackContext context)
+    public void OnPlayerMove(InputValue context)
     {
-        _direction = context.ReadValue<Vector2>();
+        _direction = context.Get<Vector2>();
     }
 
     private void OnCollisionEnter2D(Collision2D col)

@@ -1,0 +1,78 @@
+{
+    "name": "Flyer",
+    "maps": [
+        {
+            "name": "Flyer",
+            "id": "56fa1a2b-c352-4115-8b2c-60f1aa87d3b1",
+            "actions": [
+                {
+                    "name": "FlyerMove",
+                    "type": "Value",
+                    "id": "f50cb8fd-11d1-45b1-a211-4b098ddafd3a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "504fdea6-bb7a-4e4b-84cd-3d9a85d7d4dc",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlyerMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "3d464501-629f-4df0-ae45-33e9aa5106c5",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "bruh",
+                    "action": "FlyerMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "1f89ca13-0869-41d7-9de9-7ee0b3a539f0",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "bruh",
+                    "action": "FlyerMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "d0543904-6673-40d6-8369-d3a09c80af8f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "bruh",
+                    "action": "FlyerMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "af30816f-55a4-4393-bbba-1fa497de1770",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "bruh",
+                    "action": "FlyerMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
