@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
         if (!_canShoot || !Input.GetMouseButtonDown(0) && !Input.GetMouseButton(0)) return;
         
         var bulletObj = Instantiate(bullet, transform.position, new Quaternion());
+        bulletObj.tag = "PlayerBullet";
         var direction = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
         bulletObj.GetComponent<Rigidbody2D>().velocity += direction * 20;
         Destroy(bulletObj, 10);

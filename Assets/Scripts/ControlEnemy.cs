@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ControlEnemy : MonoBehaviour
 {
+    private const float ControlRange = 5;
     private bool _isMouseOver;
     private bool _inPlayerRange;
     private bool _controlledByPlayer;
@@ -16,10 +17,14 @@ public class ControlEnemy : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        _player = _cameraFollow.objectToFollow;
     }
 
     private void Update()
     {
+        var playerDistance = (_player.transform.position - transform.position).magnitude;
+        _inPlayerRange = playerDistance <= ControlRange;
+        
         if (_controlledByPlayer)
         {
             if (Input.GetMouseButtonDown(1))
@@ -47,7 +52,7 @@ public class ControlEnemy : MonoBehaviour
     {
         gameObject.SendMessage("PlayerControl", true);
         _controlledByPlayer = true;
-        _player = _cameraFollow.objectToFollow;
+        _player.gameObject.SetActive(false);
         _cameraFollow.objectToFollow = transform;
     }
 
@@ -56,6 +61,7 @@ public class ControlEnemy : MonoBehaviour
         gameObject.SendMessage("PlayerControl", false);
         _controlledByPlayer = false;
         _cameraFollow.objectToFollow = _player;
+        _player.gameObject.SetActive(true);
     }
 
     private void OnMouseEnter()
@@ -68,15 +74,12 @@ public class ControlEnemy : MonoBehaviour
         _isMouseOver = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnDestroy()
     {
-        if (col.CompareTag("Player"))
-            _inPlayerRange = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            _inPlayerRange = false;
+        if (_controlledByPlayer)
+        {
+            _cameraFollow.objectToFollow = _player;
+            _player.gameObject.SetActive(true);
+        }
     }
 }

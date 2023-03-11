@@ -8,9 +8,22 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject barrier;
+    [SerializeField] private Image healthBar;
     private Vector2 _direction;
     private Rigidbody2D _rb;
     private int _jumpCount;
+    private const int MaxHealth = 10;
+    private int _health = 10;
+
+    public int Health
+    {
+        get => _health;
+        private set
+        {
+            _health = value;
+            healthBar.fillAmount = (float)_health / MaxHealth;
+        }
+    }
 
     private void Awake()
     {
@@ -47,7 +60,16 @@ public class Player : MonoBehaviour
         if (col.gameObject.CompareTag("Ground"))
         {
             _jumpCount = 0;
-            transform.rotation = new Quaternion(); 
+            transform.rotation = new Quaternion();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("MonsterBullet"))
+        {
+            Health--;
+            Destroy(col.gameObject);
         }
     }
 }

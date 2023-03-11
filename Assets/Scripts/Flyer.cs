@@ -11,8 +11,22 @@ public class Flyer : MonoBehaviour
     [SerializeField] private float speed;
     private bool _controlledByPLayer;
     private Vector2 _direction;
-    private const int ShootRadius = 5;
+    private const int ShootRadius = 10;
     private bool _canShoot = true;
+    private int _health = 10;
+
+    public int Health
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+            if (value <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
     void Update()
     {
@@ -46,13 +60,17 @@ public class Flyer : MonoBehaviour
 
     public void PlayerControl(bool controlled)
     {
-        player.SetActive(!controlled);
         _controlledByPLayer = controlled;
+        if (!controlled)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Shoot()
     {
         var bulletObj = Instantiate(bullet, transform.position, new Quaternion());
+        bulletObj.tag = _controlledByPLayer ? "PlayerBullet" : "MonsterBullet";
         Vector2 direction;
         if (_controlledByPLayer)
         {
@@ -71,5 +89,15 @@ public class Flyer : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         _canShoot = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (_controlledByPLayer && col.CompareTag("MonsterBullet") ||
+            !_controlledByPLayer && col.CompareTag("PlayerBullet"))
+        {
+            Health--;
+            Destroy(col.gameObject);
+        }
     }
 }
