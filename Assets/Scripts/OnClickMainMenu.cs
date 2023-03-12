@@ -14,6 +14,7 @@ public class OnClickMainMenu : MonoBehaviour
     [SerializeField] private Button exit;
     [SerializeField] private Button help;
     [SerializeField] private Button helpExit;
+    [SerializeField] private Button authors; 
     private void Awake()
     {
         
@@ -22,5 +23,6 @@ public class OnClickMainMenu : MonoBehaviour
         exit.onClick.AddListener((() => Application.Quit()));
         help.onClick.AddListener((() => helpWindow.SetActive(true)));
         helpExit.onClick.AddListener((() => helpWindow.SetActive(false)));
+        authors.onClick.AddListener((() => SceneManager.LoadScene("Authors")));
     }
 }

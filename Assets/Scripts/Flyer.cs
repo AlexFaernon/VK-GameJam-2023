@@ -10,7 +10,6 @@ public class Flyer : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float speed;
-    [SerializeField] private TMP_Text score;
     private bool _controlledByPLayer;
     private Vector2 _direction;
     private const int ShootRadius = 10;
@@ -27,7 +26,6 @@ public class Flyer : MonoBehaviour
             {
                 Destroy(gameObject);
                 GameScore.Score++;
-                score.text = GameScore.Score.ToString();
             }
         }
     }
@@ -69,7 +67,6 @@ public class Flyer : MonoBehaviour
         {
             Destroy(gameObject);
             GameScore.Score++;
-            score.text = GameScore.Score.ToString();
         }
     }
 
