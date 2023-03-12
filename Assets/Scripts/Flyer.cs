@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Flyer : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float speed;
+    [SerializeField] private TMP_Text score;
     private bool _controlledByPLayer;
     private Vector2 _direction;
     private const int ShootRadius = 10;
@@ -24,6 +26,8 @@ public class Flyer : MonoBehaviour
             if (value <= 0)
             {
                 Destroy(gameObject);
+                GameScore.Score++;
+                score.text = GameScore.Score.ToString();
             }
         }
     }
@@ -64,6 +68,8 @@ public class Flyer : MonoBehaviour
         if (!controlled)
         {
             Destroy(gameObject);
+            GameScore.Score++;
+            score.text = GameScore.Score.ToString();
         }
     }
 

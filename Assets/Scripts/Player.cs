@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,11 +10,15 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject barrier;
     [SerializeField] private Image healthBar;
+    [SerializeField] private GameObject gameEnd;
+    private SpriteRenderer _sprite;
+    private Animator _anim;
     private Vector2 _direction;
     private Rigidbody2D _rb;
     private int _jumpCount;
     private const int MaxHealth = 10;
     private int _health = 10;
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     public int Health
     {
@@ -22,17 +27,27 @@ public class Player : MonoBehaviour
         {
             _health = value;
             healthBar.fillAmount = (float)_health / MaxHealth;
+            if (value <= 0)
+            {
+                _anim.Play("Die"); // fix
+                gameEnd.SetActive(true);
+            }
         }
     }
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
+        if (_direction == Vector2.zero)
+            _anim.Play("Inaction");
+        _sprite.flipX = _direction == Vector2.left;
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.E))
         {
             barrier.SetActive(true);
         }
@@ -53,6 +68,7 @@ public class Player : MonoBehaviour
     public void OnPlayerMove(InputValue context)
     {
         _direction = context.Get<Vector2>();
+        _anim.Play("Run");
     }
 
     private void OnCollisionEnter2D(Collision2D col)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: def17af06087b45489aeb72232fb611f
+guid: bb5d381bdec5e564294f63fc2a485111
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,7 +115,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: playerDie_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 60
+        width: 355
+        height: 405
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe950e23d17f1204d9099758ee0164b0
+      internalID: -1086191215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerDie_5
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 60
+        width: 355
+        height: 405
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c80f212936b92d41823b4c1cfe89eb2
+      internalID: 20487143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerDie_15
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 122
+        width: 355
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7524b5456e3a4ff4a856e1dfc886f029
+      internalID: 1533504075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: playerDie_18
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 100
+        width: 355
+        height: 405
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065c6912e8ef87142a3e0e3056ca5c4d
+      internalID: 768650945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +210,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      playerDie_0: -601776224
+      playerDie_1: 1099565506
+      playerDie_10: 1743128904
+      playerDie_11: 230465131
+      playerDie_12: -307398150
+      playerDie_13: -2121291591
+      playerDie_14: -544320198
+      playerDie_15: 1533504075
+      playerDie_16: -1738750915
+      playerDie_17: -1109232616
+      playerDie_18: 768650945
+      playerDie_19: 138082138
+      playerDie_2: -1800237644
+      playerDie_20: -1281300904
+      playerDie_21: -1586454866
+      playerDie_22: 659444604
+      playerDie_23: 1453616552
+      playerDie_3: 1945315264
+      playerDie_4: -1086191215
+      playerDie_5: 20487143
+      playerDie_6: 694391192
+      playerDie_7: -222875801
+      playerDie_8: -1931885524
+      playerDie_9: 1034527495
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
