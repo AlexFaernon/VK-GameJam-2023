@@ -44,13 +44,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Health <= 0) return;
+        
         if (_direction == Vector2.zero)
         {
             _anim.Play("Inaction");
         }
         _sprite.flipX = _direction == Vector2.left;
         
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
+        if (Barrier.Charge > 0 && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift)))
         {
             barrier.SetActive(true);
         }
@@ -75,6 +77,8 @@ public class Player : MonoBehaviour
 
     public void OnPlayerMove(InputValue context)
     {
+        if (Health <= 0) return;
+        
         _direction = context.Get<Vector2>();
         _anim.Play("Run");
     }

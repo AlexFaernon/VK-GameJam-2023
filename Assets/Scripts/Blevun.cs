@@ -21,6 +21,8 @@ public class Blevun : MonoBehaviour
             {
                 Destroy(gameObject);
                 GameScore.Score++;
+                ControlEnemy.Charge++;
+
             }
         }
     }

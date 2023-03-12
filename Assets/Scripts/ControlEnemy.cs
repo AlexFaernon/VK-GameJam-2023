@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ControlEnemy : MonoBehaviour
 {
+    public static int Charge;
     private const float ControlRange = 5;
     private bool _isMouseOver;
     private bool _inPlayerRange;
@@ -24,7 +25,7 @@ public class ControlEnemy : MonoBehaviour
     {
         var playerDistance = (_player.transform.position - transform.position).magnitude;
         _inPlayerRange = playerDistance <= ControlRange;
-        
+
         if (_controlledByPlayer)
         {
             if (Input.GetMouseButtonDown(1))
@@ -34,7 +35,7 @@ public class ControlEnemy : MonoBehaviour
             return;
         }
         
-        if (_isMouseOver && _inPlayerRange)
+        if (_isMouseOver && _inPlayerRange && Charge >= 4)
         {
             _spriteRenderer.color = Color.yellow;
             if (Input.GetMouseButtonDown(1))
@@ -50,6 +51,7 @@ public class ControlEnemy : MonoBehaviour
 
     private void TakeControl()
     {
+        Charge = 0;
         gameObject.SendMessage("PlayerControl", true);
         _controlledByPlayer = true;
         _player.gameObject.SetActive(false);

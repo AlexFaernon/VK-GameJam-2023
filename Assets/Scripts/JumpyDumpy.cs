@@ -23,6 +23,7 @@ public class JumpyDumpy : MonoBehaviour
             {
                 Destroy(gameObject);
                 GameScore.Score++;
+                ControlEnemy.Charge++;
             }
         }
     }

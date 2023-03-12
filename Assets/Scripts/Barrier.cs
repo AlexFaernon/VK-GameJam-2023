@@ -7,6 +7,12 @@ public class Barrier : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private Vector2 offset;
+    public static float Charge = 1;
+
+    private void Awake()
+    {
+        Charge = 1;
+    }
 
     private void OnEnable()
     {
@@ -18,6 +24,7 @@ public class Barrier : MonoBehaviour
     {
         transform.position = player.position + (Vector3)offset;
         transform.rotation = player.rotation;
+        Charge -= 0.5f * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

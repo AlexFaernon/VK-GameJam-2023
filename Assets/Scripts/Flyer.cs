@@ -26,6 +26,7 @@ public class Flyer : MonoBehaviour
             {
                 Destroy(gameObject);
                 GameScore.Score++;
+                ControlEnemy.Charge++;
             }
         }
     }
