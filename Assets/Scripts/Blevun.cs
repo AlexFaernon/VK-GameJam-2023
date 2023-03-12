@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,11 @@ public class Blevun : MonoBehaviour
 
             }
         }
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -77,5 +83,10 @@ public class Blevun : MonoBehaviour
             Health--;
             Destroy(col.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Spawner.BlevunCount--;
     }
 }

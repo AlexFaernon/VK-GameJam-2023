@@ -15,6 +15,6 @@ public class ControlCharge : MonoBehaviour
 
     private void Update()
     {
-        _image.fillAmount = ControlEnemy.Charge / 4.0f;
+        _image.fillAmount = ControlEnemy.Charge / 3.0f;
     }
 }

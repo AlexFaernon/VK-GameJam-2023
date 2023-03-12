@@ -136,4 +136,9 @@ public class JumpyDumpy : MonoBehaviour
 
         _canJump = true;
     }
+
+    private void OnDestroy()
+    {
+        Spawner.JumperCount--;
+    }
 }

@@ -7,7 +7,7 @@ using TMPro;
 
 public class Flyer : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    private GameObject player;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float speed;
     private bool _controlledByPLayer;
@@ -29,6 +29,11 @@ public class Flyer : MonoBehaviour
                 ControlEnemy.Charge++;
             }
         }
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -103,5 +108,10 @@ public class Flyer : MonoBehaviour
             Health--;
             Destroy(col.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Spawner.FlyerCount--;
     }
 }
