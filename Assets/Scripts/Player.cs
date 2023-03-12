@@ -45,9 +45,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (_direction == Vector2.zero)
+        {
             _anim.Play("Inaction");
+        }
         _sprite.flipX = _direction == Vector2.left;
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.E))
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
         {
             barrier.SetActive(true);
         }
@@ -63,6 +66,11 @@ public class Player : MonoBehaviour
         }
         
         _rb.velocity = new Vector2(_direction.x * 5, _rb.velocity.y);
+    }
+
+    private void OnDisable()
+    {
+        barrier.SetActive(false);
     }
 
     public void OnPlayerMove(InputValue context)

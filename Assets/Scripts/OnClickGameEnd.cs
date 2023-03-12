@@ -15,19 +15,9 @@ public class OnClickGameEnd : MonoBehaviour
 
     private void Awake()
     {
-        repeat.onClick.AddListener((() => SceneManager.LoadScene("SampleScene")));
-        toMenu.onClick.AddListener((() => SceneManager.LoadScene("MainMenu")));
+        repeat.onClick.AddListener(() => SceneManager.LoadScene("SampleScene"));
+        toMenu.onClick.AddListener(() => SceneManager.LoadScene("MainMenu"));
         score.text = $"Счет: {GameScore.Score.ToString()}";
         record.text = $"Ваш рекорд: {GameScore.Record.ToString()}";
-    }
-
-    private void OnEnable()
-    {
-        Time.timeScale = 0;
-    }
-
-    private void OnDisable()
-    {
-        Time.timeScale = 1;
     }
 }
