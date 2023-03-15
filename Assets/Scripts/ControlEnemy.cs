@@ -7,6 +7,7 @@ public class ControlEnemy : MonoBehaviour
 {
     public static int Charge;
     private const float ControlRange = 5;
+    public const int MaxCharge = 3;
     private bool _isMouseOver;
     private bool _inPlayerRange;
     private bool _controlledByPlayer;
@@ -35,7 +36,7 @@ public class ControlEnemy : MonoBehaviour
             return;
         }
         
-        if (_isMouseOver && _inPlayerRange && Charge >= 4)
+        if (_isMouseOver && _inPlayerRange && Charge >= MaxCharge)
         {
             _spriteRenderer.color = Color.yellow;
             if (Input.GetMouseButtonDown(1))

@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
+        ControlEnemy.Charge = 0;
     }
 
     private void Update()
